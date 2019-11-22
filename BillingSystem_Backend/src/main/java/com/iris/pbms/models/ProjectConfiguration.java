@@ -3,9 +3,8 @@ package com.iris.pbms.models;
 import javax.persistence.Column;
 
 import javax.persistence.Entity;
-
 import javax.persistence.GeneratedValue;
-
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import javax.persistence.JoinColumn;
@@ -20,117 +19,95 @@ import javax.persistence.Table;
 public class ProjectConfiguration {
 
 	@Id
-   @GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
    @Column(name="configid")
-   private int CONFIGURATION_ID;
+   private int configurationId;
 
 	@Column(name="perHourBill")
-    private int PER_HOUR_BILLING;
+    private int perHourBilling;
 
 	@Column(name="location")
-    private String LOCATION;
+    private String location;
 
 	@ManyToOne
-    @JoinColumn(name="projectid")
+    @JoinColumn(name="projectid",insertable=false,updatable=false)
     Project projectObj;
 
 	@ManyToOne
-    @JoinColumn(name="roleid")
+    @JoinColumn(name="roleid",insertable=false,updatable=false)
     Roles roleObj;
 
+	@Column(name="projectid")
+	int projectId;
+	
+	@Column(name="roleid")
+	int roleId;
 
-
-	public ProjectConfiguration() {
-
-		super();
-
+	public int getConfigurationId() {
+		return configurationId;
 	}
 
-
-
-	public int getCONFIGURATION_ID() {
-
-		return CONFIGURATION_ID;
-
+	public void setConfigurationId(int configurationId) {
+		this.configurationId = configurationId;
 	}
 
-    public void setCONFIGURATION_ID(int cONFIGURATION_ID) {
-
-		CONFIGURATION_ID = cONFIGURATION_ID;
-
+	public int getPerHourBilling() {
+		return perHourBilling;
 	}
 
-    public int getPER_HOUR_BILLING() {
-
-		return PER_HOUR_BILLING;
-
+	public void setPerHourBilling(int perHourBilling) {
+		this.perHourBilling = perHourBilling;
 	}
 
-
-    public void setPER_HOUR_BILLING(int pER_HOUR_BILLING) {
-
-		PER_HOUR_BILLING = pER_HOUR_BILLING;
-
+	public String getLocation() {
+		return location;
 	}
 
-
-    public String getLOCATION() {
-
-		return LOCATION;
-
+	public void setLocation(String location) {
+		this.location = location;
 	}
-
-
-
-	public void setLOCATION(String lOCATION) {
-
-		LOCATION = lOCATION;
-
-	}
-
-
 
 	public Project getProjectObj() {
-
 		return projectObj;
-
 	}
-
-
 
 	public void setProjectObj(Project projectObj) {
-
 		this.projectObj = projectObj;
-
 	}
-
-
 
 	public Roles getRoleObj() {
-
 		return roleObj;
-
 	}
-
-
 
 	public void setRoleObj(Roles roleObj) {
-
 		this.roleObj = roleObj;
-
 	}
 
+	public int getProjectId() {
+		return projectId;
+	}
 
+	public void setProjectId(int projectId) {
+		this.projectId = projectId;
+	}
+
+	public int getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(int roleId) {
+		this.roleId = roleId;
+	}
 
 	@Override
-    public String toString() {
-
-		return "ProjectConfiguration [CONFIGURATION_ID=" + CONFIGURATION_ID + ", PER_HOUR_BILLING=" + PER_HOUR_BILLING
-
-				+ ", LOCATION=" + LOCATION + ", projectObj=" + projectObj + ", roleObj=" + roleObj + "]";
-
+	public String toString() {
+		return "ProjectConfiguration [configurationId=" + configurationId + ", perHourBilling=" + perHourBilling
+				+ ", location=" + location + ", projectId=" + projectId + ", roleId=" + roleId + "]";
 	}
 
 	
+
+
+		
 
 }

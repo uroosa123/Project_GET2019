@@ -2,39 +2,27 @@ package com.iris.pbms.daoimpl;
 
 import java.util.List;
 
-import com.iris.pbms.daos.RolesDao;
-import com.iris.pbms.models.Roles;
-
 import org.hibernate.Query;
-
 import org.hibernate.Session;
-
 import org.hibernate.SessionFactory;
-
 import org.springframework.beans.factory.annotation.Autowired;
-
-import org.springframework.stereotype.Component;
-
 import org.springframework.stereotype.Repository;
 
-import org.springframework.transaction.annotation.Transactional;
+import com.iris.pbms.daos.EmployeeDao;
+import com.iris.pbms.models.Employee;
 
-
-
-@Repository("roleDao")
-public class RoleDaoImpl implements RolesDao{
-
+@Repository("employeeDao")
+public class EmployeeDaoImpl implements EmployeeDao{
+	
 	@Autowired
 	SessionFactory sessionFactory;
 
-
-	public List<Roles> getAllRoles() {
-
+	public List<Employee> getAllEmployee() {
 		try {
 
 			Session session=sessionFactory.getCurrentSession();
 
-			Query q=session.createQuery("from com.iris.pbms.models.Roles");
+			Query q=session.createQuery("from com.iris.pbms.models.Employee");
 
 			if (q.list()!=null) {
 
@@ -61,7 +49,6 @@ public class RoleDaoImpl implements RolesDao{
 		}
 
 		return null;
-
 	}
 
 }

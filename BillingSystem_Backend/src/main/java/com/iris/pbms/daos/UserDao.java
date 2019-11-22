@@ -8,4 +8,6 @@ import com.iris.pbms.models.User;
 public interface UserDao {
 	 public User getUserById(int Id);
 	 public User validateUser(int Id,String password);
+	
+	 
 }

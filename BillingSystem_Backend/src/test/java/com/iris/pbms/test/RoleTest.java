@@ -33,7 +33,7 @@ public class RoleTest {
 	
 	@Test
 	@Ignore
-	public void getAllProductsTest(){
+	public void getAllRolesTest(){
 		List<Roles> pList=userdaoobj.getAllRoles();
 		out.println(pList);
 		Assert.assertNotEquals("Not Products Found...", pList.size(), 0);

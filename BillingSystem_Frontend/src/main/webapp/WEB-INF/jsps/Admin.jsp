@@ -22,7 +22,7 @@
     </button>
     <div class="dropdown-menu">
       <a class="dropdown-item" href="configure">Configure Billing</a>
-      <a class="dropdown-item" href="#">Allocate Project</a>
+      <a class="dropdown-item" href="allocate">Allocate Project</a>
       <a class="dropdown-item" href="#">View Report</a>
     </div>
   </div>

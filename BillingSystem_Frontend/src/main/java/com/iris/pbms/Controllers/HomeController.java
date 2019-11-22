@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.iris.pbms.daos.UserDao;
 import com.iris.pbms.models.User;
 import com.iris.pbms.services.UserService;
 
