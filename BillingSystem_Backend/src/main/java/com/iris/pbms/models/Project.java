@@ -23,6 +23,9 @@ public class Project {
 
 	@Column(name="active")
     private String active;
+	
+	
+	
 
 	public int getProjectId() {
 

@@ -34,12 +34,15 @@ public class DataEntryOperator {
 	private Integer halfDay;
 
 	@OneToOne
-	@JoinColumn(name="employeeid")
+	@JoinColumn(name="employeeid",insertable=false,updatable=false)
 	Employee empObj;
 	
 	@ManyToOne
-	@JoinColumn(name="projectid")
+	@JoinColumn(name="projectid",insertable=false,updatable=false)
 	Project projObj;
+	
+	private int projectId;
+	private int employeeId;
 
 	
 
@@ -149,6 +152,66 @@ public class DataEntryOperator {
 
 	public void setProjObj(Project projObj) {
 		this.projObj = projObj;
+	}
+
+
+
+	public Integer getDataEntryOperatorId() {
+		return dataEntryOperatorId;
+	}
+
+
+
+	public void setDataEntryOperatorId(Integer dataEntryOperatorId) {
+		this.dataEntryOperatorId = dataEntryOperatorId;
+	}
+
+
+
+	public Integer getFullDay() {
+		return fullDay;
+	}
+
+
+
+	public void setFullDay(Integer fullDay) {
+		this.fullDay = fullDay;
+	}
+
+
+
+	public Integer getHalfDay() {
+		return halfDay;
+	}
+
+
+
+	public void setHalfDay(Integer halfDay) {
+		this.halfDay = halfDay;
+	}
+
+
+
+	public int getProjectId() {
+		return projectId;
+	}
+
+
+
+	public void setProjectId(int projectId) {
+		this.projectId = projectId;
+	}
+
+
+
+	public int getEmployeeId() {
+		return employeeId;
+	}
+
+
+
+	public void setEmployeeId(int employeeId) {
+		this.employeeId = employeeId;
 	}
 
 

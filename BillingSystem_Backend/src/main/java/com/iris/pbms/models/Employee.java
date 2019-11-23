@@ -22,6 +22,8 @@ public class Employee {
 
 	@Column(name="employeename")
 	private String employeeName;
+	
+	
 
 
 	public int getEmployeeId() {

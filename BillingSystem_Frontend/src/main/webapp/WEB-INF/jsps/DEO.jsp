@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" isELIgnored="false"%>
     <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ taglib prefix="f" uri="http://www.springframework.org/tags/form" %>
@@ -8,21 +8,22 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 </head>
 <body>
-<h1>hi i am deo</h1>
-
-<f:form action="submitData" modelAttribute="dataObj" method="get">
+<div align="center">
+<f:form action="submitData" modelAttribute="deoObj" method="get">
 
 		<div>
 
-		<label>Developer Name :</label>
+		<label>Project :</label>
 
-		<f:select path="devObj.developerId" cssClass="form-control">
+		<f:select path="projectId" id="project">
+			<f:option value="0">----Select Project--------</f:option>
+ 	 		<core:forEach items="${projList}" var="dOb">
 
- 	 		<core:forEach items="${devObj}" var="dOb">
-
- 	 			<f:option value="${dOb.developerId}">${dOb.developerName}</f:option>
+ 	 			<f:option value="${dOb.projectId}">${dOb.projectName}</f:option>
 
 	 		</core:forEach>
 
@@ -30,7 +31,15 @@
 
 		</div>
 
-		
+		<div>
+
+		<label>Employees Under project :</label>
+
+		<f:select path="employeeId" id="employee" >
+			<f:option value="0">----Select Employee--------</f:option>
+		</f:select><br>
+		<div id="msg"></div>
+		</div>
 
 		<div>
 
@@ -70,41 +79,7 @@
 
 		
 
-		<div>
-
-		<label>Year :</label>
-
-		<f:select path="year" id="year" cssClass="form-control" required="true">
-
-			<f:option value="">Select year</f:option>
-
-		</f:select>
-
-		<script type="text/javascript">
-
-			for(y=2015;y<2029;y++){
-
-				var optn = document.createElement("OPTION");
-
-				optn.text=y;
-
-				optn.value=y;
-
-				
-
-				if(y==2019){
-
-					optn.selected=true;
-
-				}
-
-				document.getElementById('year').options.add(optn);
-
-			}
-
-		</script>
-
-		</div>
+		
 
 		<br>
 
@@ -137,5 +112,38 @@
 	</f:form>
 
 	</div>
+	<script type="text/javascript">
+		$('select#project').on('change', function() {
+			console.log('I m here');
+			$("div#msg").html("");
+			var projectId=this.value;
+			console.log('Project Id : '+projectId);
+			$.get("getEmployeesList?projectId="+projectId, function(data, status){
+			    
+			    console.log(data.length);
+			    if(data.length!=0){
+			    console.log('I m in if');
+			    data.forEach(function(el, index) {
+			    	console.log('Hello I m in for Each..');
+			        console.log(el.employeeId+" "+el.employeeName);
+			      
+			        
+			        var o = new Option(el.employeeName, el.employeeId);
+		                 /// jquerify the DOM object 'o' so we can use the html method
+		                 $(o).html(el.employeeName);
+		                 $("#employee").append(o)
+			      });
+			    }
+			    else {
+			    	console.log('I m in else');
+			    	$("div#msg").html("No Employee exist for the given project...");
+			    	$('#employee').empty()
+			    	$("#employee").hide();
+			    }
+			   
+			  });
+			
+		});
+	</script>
 </body>
 </html>

@@ -18,6 +18,7 @@ import com.iris.pbms.models.ProjectConfiguration;
 
 
 @Repository("projectDao")
+@Transactional
 public class ProjectDaoImpl implements ProjectDao{
 	
 	@Autowired
@@ -229,6 +230,52 @@ public class ProjectDaoImpl implements ProjectDao{
 
 		return false;
 
+	}
+
+	public List<ProjectConfiguration> getAllProjectConfigurations(int projectId) {
+		try {
+
+			Session session=sessionFactory.getCurrentSession();
+
+			Query q=session.createQuery("from com.iris.pbms.models.ProjectConfiguration where projectObj.projectId=:projectId");
+
+			 q.setParameter("projectId",projectId);
+
+			return q.list();
+
+		}
+
+		catch(Exception e)
+
+		{
+
+			e.printStackTrace();
+
+		}
+
+		return null;
+	}
+
+	public List<ProjectAllocation> getProjectAllocations() {
+		try {
+
+			Session session=sessionFactory.getCurrentSession();
+			Query q=session.createQuery("from com.iris.pbms.models.ProjectAllocation");
+			
+			List list=q.list();
+			return list;
+
+		}
+
+		catch(Exception e)
+
+		{
+
+			e.printStackTrace();
+
+		}
+
+		return null;
 	}
 
 }

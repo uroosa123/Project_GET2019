@@ -46,7 +46,7 @@ public class HomeController {
 			}
 			else if(uObj.getUserRole().equals("DEO")) {
 				session.setAttribute("uObj",uObj);
-				return "DEO";
+				return "WelcomeDeo";
 			}
 			else {
 				session.setAttribute("uObj",uObj);

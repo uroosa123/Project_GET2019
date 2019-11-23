@@ -2,6 +2,7 @@ package com.iris.pbms.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -19,7 +20,7 @@ public class ProjectAllocation {
 	@Column(name="allocateid")
 	private int allocationId;
 
-	@OneToOne
+	@OneToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="configid")
 	ProjectConfiguration pcObj;
 
