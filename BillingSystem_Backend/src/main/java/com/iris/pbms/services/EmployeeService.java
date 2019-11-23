@@ -5,4 +5,6 @@ import com.iris.pbms.models.Employee;
 
 public interface EmployeeService {
 	public List<Employee> getAllEmployee();
+	public List<Employee> getAllEmployeeNotAllocated();
+	public Employee getEmployeeById(int id);
 }

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.iris.pbms.models.Employee;
 import com.iris.pbms.models.Project;
+import com.iris.pbms.models.ProjectAllocation;
 import com.iris.pbms.models.ProjectConfiguration;
 import com.iris.pbms.models.Roles;
 import com.iris.pbms.services.EmployeeService;
@@ -104,7 +105,45 @@ public class AdminController {
 		mv.addObject("projList",plist);
 		mv.addObject("roleList",rlist);
 		mv.addObject("empList",elist);
-		return mv;
+		return mv;}
+	
+	@RequestMapping(value="/submitAllocate",method=RequestMethod.GET)
+
+	public String validateConfigr(@RequestParam int projectId,@RequestParam int roleId,@RequestParam String location,@RequestParam int employeeId,ModelMap map){
+
+		System.out.println(projectId+""+roleId+""+location+""+employeeId);
+		
+		List<Project> plist=projectService.getAllProject();
+		List<Roles> rlist=roleService.getAllRoles();
+		List<Employee> elist=employeeService.getAllEmployee();
+		map.addAttribute("projList",plist);
+		map.addAttribute("roleList",rlist);
+		map.addAttribute("empList",elist);
+
+	List<ProjectConfiguration> Obj=projectService.validateProject(projectId,roleId,location);
+
+	ProjectConfiguration configObj=Obj.get(0);
+
+	Employee devObj=employeeService.getEmployeeById(employeeId);
+
+	ProjectAllocation ab=new ProjectAllocation();
+
+	ab.setdObj(devObj);
+
+	ab.setPcObj(configObj);
+
+	boolean saved=projectService.setProjectAllocation(ab);
+	if(saved) {
+		map.addAttribute("msg","Allocation done");
+		return "allocate";
+		
+	}
+	else {
+		map.addAttribute("msg","Allocation error");
+	return "allocate";
+	}
+
+	}
 
 }
-}
+

@@ -44,4 +44,16 @@ public class ProjectServiceImpl implements ProjectService{
 		boolean r=projectDaoobj.checkProjectConfiguration(obj);
 		return r;
 	}
+
+	public List<ProjectConfiguration> getAllProjectConfigNotAllocated() {
+		return projectDaoobj.getAllProjectConfigNotAllocated();
+	}
+
+	public List<ProjectConfiguration> validateProject(int projectId, int roleId, String location) {
+		return projectDaoobj.validateProject(projectId, roleId, location);
+	}
+
+	public boolean setProjectAllocation(ProjectAllocation projectAllocation) {
+		return projectDaoobj.setProjectAllocation(projectAllocation);
+	}
 }

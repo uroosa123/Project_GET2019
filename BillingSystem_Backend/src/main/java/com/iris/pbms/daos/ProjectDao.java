@@ -17,6 +17,9 @@ public interface ProjectDao {
 	public List<ProjectConfiguration> getAllProjectConfig();
 	/*public boolean setProjectConfig(ProjectConfiguration obj);*/
 	public boolean checkProjectConfiguration(ProjectConfiguration obj);
+	public List<ProjectConfiguration> getAllProjectConfigNotAllocated();
+	public List<ProjectConfiguration> validateProject(int projectId,int roleId,String location) ;
+	public boolean setProjectAllocation(ProjectAllocation projectAllocation);
 
 	
 }

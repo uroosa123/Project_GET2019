@@ -24,4 +24,12 @@ public class EmployeeServiceImpl implements EmployeeService  {
 		return employeeDao.getAllEmployee();
 	}
 
+	public List<Employee> getAllEmployeeNotAllocated() {
+		return employeeDao.getAllEmployeeNotAllocated();
+	}
+
+	public Employee getEmployeeById(int id) {
+		return employeeDao.getEmployeeById(id);
+	}
+
 }

@@ -154,5 +154,81 @@ public class ProjectDaoImpl implements ProjectDao{
 		return false;
 	}
 	
+	public List<ProjectConfiguration> getAllProjectConfigNotAllocated() {
+
+		// TODO Auto-generated method stub
+
+		try {
+
+			Session session=sessionFactory.getCurrentSession(); 
+
+			Query q=session.createQuery("from ProjectConfiguration where configurationId not in(select pcObj.configurationId from ProjectAllocation)");
+
+			return q.list();
+
+		}
+
+		catch(Exception e)
+
+		{
+
+			e.printStackTrace();
+
+		}
+
+		return null;
+
+	}
+
+	public List<ProjectConfiguration> validateProject(int projectId, int roleId, String location) {
+		try {
+
+			Session session=sessionFactory.getCurrentSession();
+
+			Query q=session.createQuery("from com.iris.pbms.models.ProjectConfiguration where projectObj.projectId=:projectId and roleObj.roleId=:roleId and location=:location");
+
+			 q.setParameter("projectId",projectId);
+
+			   q.setParameter("roleId",roleId);
+
+			   q.setParameter("location",location);
+
+			return q.list();
+
+		}
+
+		catch(Exception e)
+
+		{
+
+			e.printStackTrace();
+
+		}
+
+		return null;
+	}
+	
+	public boolean setProjectAllocation(ProjectAllocation projectAllocation) {
+
+		try {
+
+		Session session=sessionFactory.getCurrentSession();
+		Query q=session.createQuery("from com.iris.pbms.models.ProjectAllocation where employeeId=:employeeId and configId=:configurationId");
+		q.setParameter("employeeId",projectAllocation.getdObj().getEmployeeId());
+		q.setParameter("configurationId",projectAllocation.getPcObj().getConfigurationId());
+		if(q.list().size()==0) {
+			session.save(projectAllocation);
+			return true;
+		}
+		}
+		catch(Exception e) {
+
+			e.printStackTrace();
+
+		}
+
+		return false;
+
+	}
 
 }

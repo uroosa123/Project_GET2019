@@ -13,5 +13,8 @@ public interface ProjectService {
 	public Project getProjectById(int projectId);
 	public List<ProjectConfiguration> getAllProjectConfig();
 	public boolean setProjectConfig(ProjectConfiguration obj);
+	public List<ProjectConfiguration> getAllProjectConfigNotAllocated();
+	public List<ProjectConfiguration> validateProject(int projectId,int roleId,String location) ;
+	public boolean setProjectAllocation(ProjectAllocation projectAllocation);
 
 }
