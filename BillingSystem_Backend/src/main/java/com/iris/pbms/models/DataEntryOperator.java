@@ -216,4 +216,13 @@ public class DataEntryOperator {
 
 
 
+	@Override
+	public String toString() {
+		return "DataEntryOperator [dataEntryOperatorId=" + dataEntryOperatorId + ", month=" + month + ", year=" + year
+				+ ", fullDay=" + fullDay + ", halfDay=" + halfDay + ", empObj=" + empObj + ", projObj=" + projObj
+				+ ", projectId=" + projectId + ", employeeId=" + employeeId + "]";
+	}
+
+
+
 }

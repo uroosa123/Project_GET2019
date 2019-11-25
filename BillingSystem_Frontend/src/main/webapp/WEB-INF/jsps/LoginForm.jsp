@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1 style="text-align: center;font-family: verdana;color:#000080">
-			${msg1}
+			${msg}
 		</h1>		<hr/>
 		<div align="center">
 		<h1 style="text-align: center;font-family: verdana;color:#000080">Sign In</h1>

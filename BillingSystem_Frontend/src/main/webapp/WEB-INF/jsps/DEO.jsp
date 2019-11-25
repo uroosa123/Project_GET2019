@@ -12,7 +12,18 @@
 
 </head>
 <body>
-<div align="center">
+
+<hr/>
+		<div align="center">
+		<h1 style="text-align: center;font-family: verdana;color:#000080">Mark Attendance Here! </h1>
+		
+		<core:if test="${not empty msg}">
+		<div style="text-align: center;font-family: verdana;color:#000080" class="alert alert-success">${msg}
+		</div>
+		</core:if>
+		
+		
+		<hr/>
 <f:form action="submitData" modelAttribute="deoObj" method="get">
 
 		<div>
@@ -76,6 +87,42 @@
 		<br>
 
 		</div>
+		
+		<div>
+
+		<label>Year :</label>
+
+		<f:select path="year" id="year" cssClass="form-control" required="true">
+
+			<f:option value="">Select year</f:option>
+
+		</f:select>
+
+		<script type="text/javascript">
+
+			for(y=2015;y<2020;y++){
+
+				var optn = document.createElement("OPTION");
+
+				optn.text=y;
+
+				optn.value=y;
+
+				
+
+				if(y==2019){
+
+					optn.selected=true;
+
+				}
+
+				document.getElementById('year').options.add(optn);
+
+			}
+
+		</script>
+
+		</div>
 
 		
 
@@ -137,7 +184,7 @@
 			    else {
 			    	console.log('I m in else');
 			    	$("div#msg").html("No Employee exist for the given project...");
-			    	$('#employee').empty()
+			    	$('#employee').empty();
 			    	$("#employee").hide();
 			    }
 			   

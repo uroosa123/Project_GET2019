@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.iris.pbms.daos.ProjectDao;
 import com.iris.pbms.daos.UserDao;
+import com.iris.pbms.models.DataEntryOperator;
 import com.iris.pbms.models.Project;
 import com.iris.pbms.models.ProjectAllocation;
 import com.iris.pbms.models.ProjectConfiguration;
@@ -37,6 +38,11 @@ public class UserServiceImpl implements UserService {
 	public List<ProjectConfiguration> getAllProjectConfig() {
 		return projectDaoobj.getAllProjectConfig();
 	}
+	public boolean setAttendance(DataEntryOperator obj) {
+		return userDaoObj.setAttendance(obj);
+	}
+	
+	
 	
 	}
 

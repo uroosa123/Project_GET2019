@@ -42,14 +42,16 @@ public class HomeController {
 			session.setAttribute("uObj",uObj);
 			System.out.println("hi");
 			if(uObj.getUserRole().equals("admin")){
+				map.addAttribute(uObj);
 				return "Admin";
 			}
 			else if(uObj.getUserRole().equals("DEO")) {
-				session.setAttribute("uObj",uObj);
+				map.addAttribute("uObj",uObj);
+				
 				return "WelcomeDeo";
 			}
 			else {
-				session.setAttribute("uObj",uObj);
+				map.addAttribute("uObj",uObj);
 				return "Manager";
 			}
 		}

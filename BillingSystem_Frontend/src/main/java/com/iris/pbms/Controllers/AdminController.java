@@ -44,8 +44,21 @@ public class AdminController {
 	@Autowired
 	EmployeeService employeeService;
 	
+	public boolean checkSession(ModelMap map) {
+		if(session.getAttribute("uObj")==null) {
+			map.addAttribute("msg","Session does not exist");
+			return true;
+		}
+		return false;
+	}
+	
 	@RequestMapping(value="/configure",method=RequestMethod.GET)
-	public ModelAndView getAllconfigure() throws Exception{
+	public ModelAndView getAllconfigure(ModelMap map) throws Exception{
+		
+		if(checkSession(map)) {
+			ModelAndView mv=new ModelAndView("LoginForm");
+			return mv;
+		}
 		
 		List<ProjectConfiguration> projCon=userService.getAllProjectConfig();
 		List<Project> plist=projectService.getAllProject();
@@ -64,7 +77,12 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/submitConfig",method=RequestMethod.GET)
-	public ModelAndView setConfig(@ModelAttribute(name="pObj") ProjectConfiguration pObj) throws Exception{
+	public ModelAndView setConfig(@ModelAttribute(name="pObj") ProjectConfiguration pObj,ModelMap map) throws Exception{
+		
+		if(checkSession(map)) {
+			ModelAndView mv=new ModelAndView("LoginForm");
+			return mv;
+		}
 		
 		System.out.println(pObj);
 		boolean saved=projectService.setProjectConfig(pObj);
@@ -97,7 +115,12 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/allocate",method=RequestMethod.GET)
-	public ModelAndView getAllocated() throws Exception{
+	public ModelAndView getAllocated(ModelMap map) throws Exception{
+		
+		if(checkSession(map)) {
+			ModelAndView mv=new ModelAndView("LoginForm");
+			return mv;
+		}
 		List<Project> plist=projectService.getAllProject();
 		List<Roles> rlist=roleService.getAllRoles();
 		List<Employee> elist=employeeService.getAllEmployee();
@@ -112,6 +135,10 @@ public class AdminController {
 	public String validateConfigr(@RequestParam int projectId,@RequestParam int roleId,@RequestParam String location,@RequestParam int employeeId,ModelMap map){
 
 		System.out.println(projectId+""+roleId+""+location+""+employeeId);
+		
+		if(checkSession(map)) {
+			return "LoginForm";
+		}
 		
 		List<Project> plist=projectService.getAllProject();
 		List<Roles> rlist=roleService.getAllRoles();
@@ -128,6 +155,7 @@ public class AdminController {
 
 	ProjectAllocation ab=new ProjectAllocation();
 
+	
 	ab.setdObj(devObj);
 
 	ab.setPcObj(configObj);

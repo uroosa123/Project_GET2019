@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iris.pbms.daos.ProjectDao;
+import com.iris.pbms.daos.UserDao;
 import com.iris.pbms.models.DataEntryOperator;
 import com.iris.pbms.models.Employee;
 import com.iris.pbms.models.Project;
@@ -45,9 +46,22 @@ public class DEOController {
 	@Autowired
 	EmployeeService employeeService;
 	
+	 public boolean checkSession(ModelMap map) {
+			if(session.getAttribute("uObj")==null) {
+				map.addAttribute("msg","Session does not exist");
+				return true;
+			}
+			return false;
+		}
+	
 	
  @RequestMapping(value="/mark",method=RequestMethod.GET)
- public ModelAndView getAttendance() throws Exception{
+ public ModelAndView getAttendance(ModelMap map) throws Exception{
+	 
+	 if(checkSession(map)) {
+			ModelAndView mv=new ModelAndView("LoginForm");
+			return mv;
+		}
 		
 		List<Project> plist=projectService.getAllProject();
 		List<Employee> elist=employeeService.getAllEmployee();
@@ -63,11 +77,17 @@ public class DEOController {
  @Autowired
  ProjectDao projectDao;
  
+ @Autowired
+ UserDao userDao;
+ 
+
+ 
  
  @ResponseBody
  @RequestMapping(value="/getEmployeesList",method=RequestMethod.GET)
  public List<Employee> getAllEmployees(@RequestParam("projectId")int projectId){
 	 System.out.println("Given project Id : "+projectId);
+	 
 	 
 	 List<Employee> empList=new ArrayList<>();
 
@@ -87,10 +107,37 @@ public class DEOController {
 	 
 	 return empList;
  }
+ 
+ @RequestMapping(value="/submitData",method=RequestMethod.GET)
+ public ModelAndView submitAttendance(@ModelAttribute(name="deoObj") DataEntryOperator deoObj,@RequestParam int employeeId,@RequestParam int projectId,ModelMap map) throws Exception{
+	 //System.out.println(projectId+" "+employeeId);
+	 if(checkSession(map)) {
+			ModelAndView mv=new ModelAndView("LoginForm");
+			return mv;
+		}
+	 
+	 System.out.println(deoObj);
+	 Employee devObj=employeeService.getEmployeeById(employeeId);
+	 Project proObj=projectService.getProjectById(projectId);
+	 deoObj.setEmpObj(devObj);
+	 deoObj.setProjObj(proObj);
+	 boolean saved=userService.setAttendance(deoObj);
+	 ModelAndView mv= new ModelAndView("DEO");
+	 if(saved) {
+			mv.addObject("msg", "Attendance Marked!");
+			return mv;
+			
+		}
+		else {
+		mv.addObject("msg", "Attendance cannot be marked!");
+		return mv;
+		
+ }
+		
 
 }
 
-
+}
 
 
 
