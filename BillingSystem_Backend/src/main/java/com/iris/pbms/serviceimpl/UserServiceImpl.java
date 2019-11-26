@@ -41,9 +41,21 @@ public class UserServiceImpl implements UserService {
 	public boolean setAttendance(DataEntryOperator obj) {
 		return userDaoObj.setAttendance(obj);
 	}
+	public List<DataEntryOperator> getAllDeoAttendance() {
+		
+		return userDaoObj.getAllDeoAttendance();	
 	
-	
-	
+	}
+	public ProjectAllocation getConfig(int id) {
+		
+		return userDaoObj.getConfig(id);
+	}
+	public DataEntryOperator getBill(Integer id, String month, int year) {
+		return userDaoObj.getBill(id, month, year);
+	}
+	public double getBill(double perHourBilling, DataEntryOperator deo) {
+		return userDaoObj.getBill(perHourBilling, deo);
+	}
 	}
 
 

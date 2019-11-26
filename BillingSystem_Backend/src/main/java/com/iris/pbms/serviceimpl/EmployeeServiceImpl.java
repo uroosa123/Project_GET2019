@@ -32,4 +32,8 @@ public class EmployeeServiceImpl implements EmployeeService  {
 		return employeeDao.getEmployeeById(id);
 	}
 
+	public String getEmployeeById1(int id) {
+		return employeeDao.getEmployeeById1(id);
+	}
+
 }

@@ -61,5 +61,30 @@ public class HomeController {
 		}
 		
 	}
+	
+	@RequestMapping(value="/logout", method=RequestMethod.GET)
+
+	public String logout() {
+
+		session.removeAttribute("uObj");
+
+		session.invalidate();
+
+		return "HomePage";
+
+	}
+	
+	@RequestMapping(value="/HOME", method=RequestMethod.GET)
+
+	public String HOME() {
+		return "Admin";
+	}
+	
+	@RequestMapping(value="/HOMEe", method=RequestMethod.GET)
+
+	public String HOMEe() {
+		return "WelcomeDeo";
+	}
+
 
 }

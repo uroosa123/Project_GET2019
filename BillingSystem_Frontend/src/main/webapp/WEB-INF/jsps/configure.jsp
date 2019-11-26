@@ -3,6 +3,8 @@
      <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ taglib prefix="f" uri="http://www.springframework.org/tags/form" %>
+<%@ include file="header2.jsp" %>
+ <%@ include file="footer.jsp" %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -56,31 +58,44 @@
 
 			
 
-			<div><label>Location:</label></br>
+			<label>Location:</label>
 
 			
 
-				<div class="custom-control custom-radio">	
+			<!--  	<div class="custom-control custom-radio">	
 
-					<f:radiobutton path="location" value="Onsite" class="custom-control-input" id="Onsite"/>
+					<f:radiobutton path="location" value="Onsite"  id="Onsite"/>
 
 					<label class="custom-control-label" for="Onsite">Onsite</label>
+</div>
 
-				</div>
-
-				<div class="custom-control custom-radio">
-
-					<f:radiobutton path="location" value="Offshore" class="custom-control-input" id="Offshore" checked = "checked"/>
+               <div class="custom-control custom-radio">
+					<f:radiobutton path="location" value="Offshore"  id="Offshore" checked = "checked"/>
 
 					<label class="custom-control-label" for="Offshore">Offshore</label>
 
 				</div>
+				-->
+				
+				<div class="custom-control custom-radio">	
 
-			</div>	
+					 <input type="radio" name="location" value="Onsite"> Onsite<br>
+
+ 					 <input type="radio" name="location" value="Offshore" checked> Offshore<br>
+
+					
+
+					
+
+					
+
+				</div>
+
+				
 
 			<br><div class="form-group">
 
-	    			<label>Per Hour Billing  : </label> <f:input type="number" path="perHourBilling" size="30" cssClass="form-control" placeholder="Enter Per Hour Billing" required="required"/>
+	    			<label>Per Hour Billing  : </label> <f:input type="number" path="perHourBilling" size="30"  placeholder="Enter Per Hour Billing" required="required"/>
 		   
 
 			 </div>

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+import com.iris.pbms.models.DataEntryOperator;
 import com.iris.pbms.models.Employee;
 import com.iris.pbms.models.Project;
 import com.iris.pbms.models.ProjectAllocation;
@@ -170,6 +171,104 @@ public class AdminController {
 		map.addAttribute("msg","Allocation error");
 	return "allocate";
 	}
+
+	}
+	
+	@RequestMapping(value= "/viewReport",method=RequestMethod.GET)
+
+	public String DevBill(ModelMap map)
+
+	{	
+
+		if(checkSession(map)) {
+
+			return "LoginForm";
+
+		}
+
+		
+
+		//List<ProjectAllocation> dList = adminDao.getAllAllocate();
+
+		List<DataEntryOperator> dList=userService.getAllDeoAttendance();
+
+		map.addAttribute("devL", dList);
+
+		return "viewEmployee";
+
+	}
+
+	
+
+	@RequestMapping(value= "/Billing",method=RequestMethod.GET)
+
+	public ModelAndView DevBills(@RequestParam(name="month") String month,@RequestParam(name="employeeId") int employeeId,@RequestParam(name="year") int year,ModelMap map)
+
+	{	
+
+		if(checkSession(map)) {
+
+			return new ModelAndView("LoginForm");
+
+		}
+
+		
+
+		try 
+
+		{
+
+			System.out.println("month");
+
+			ProjectAllocation configObj = userService.getConfig(employeeId);
+
+			double perHourBilling=configObj.getPcObj().getPerHourBilling();
+
+			String name = employeeService.getEmployeeById1(employeeId);
+
+			System.out.println("i ma in bill");
+
+			map.addAttribute("name", name);
+
+			DataEntryOperator deo=userService.getBill(employeeId, month,year);
+
+			System.out.println(deo.getfullDay());
+
+			double bill = userService.getBill(perHourBilling,deo);
+
+			map.addAttribute("bill",bill);
+
+			map.addAttribute("de", employeeId);
+
+			map.addAttribute("mo",(month.charAt(0)+"").toUpperCase()+(month.substring(1).toLowerCase()));
+
+			map.addAttribute("y",year);
+
+			ModelAndView mv=new ModelAndView("ViewEmpDetails");
+
+			mv.addObject("msg","Developer Allocated Succesfully..");
+
+			System.out.println("enter in the bill controller");
+
+			return mv;
+
+		}
+
+		catch(Exception e)
+
+		{
+
+			ModelAndView mv=new ModelAndView("Admin");
+
+			mv.addObject("errorMsg","Developer not  allocated ..");
+
+			System.out.println("catch of bill");
+
+			return mv;
+
+		}
+
+		
 
 	}
 

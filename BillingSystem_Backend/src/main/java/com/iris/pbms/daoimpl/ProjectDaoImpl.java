@@ -216,7 +216,7 @@ public class ProjectDaoImpl implements ProjectDao{
 		try {
 
 		Session session=sessionFactory.getCurrentSession();
-		Query q=session.createQuery("from com.iris.pbms.models.ProjectAllocation where employeeId=:employeeId or configId=:configurationId");
+		Query q=session.createQuery("from com.iris.pbms.models.ProjectAllocation where employeeId=:employeeId and configId=:configurationId");
 		q.setParameter("employeeId",projectAllocation.getdObj().getEmployeeId());
 		q.setParameter("configurationId",projectAllocation.getPcObj().getConfigurationId());
 		if(q.list().size()==0) {

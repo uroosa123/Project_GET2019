@@ -4,6 +4,8 @@
     pageEncoding="ISO-8859-1" isELIgnored="false" %>
 
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="header2.jsp" %>
+ <%@ include file="footer.jsp" %>
 
 
 

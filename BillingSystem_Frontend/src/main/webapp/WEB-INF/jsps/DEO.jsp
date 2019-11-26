@@ -3,6 +3,8 @@
     <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ taglib prefix="f" uri="http://www.springframework.org/tags/form" %>
+ <%@ include file="header3.jsp" %>
+ <%@ include file="footer.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -56,7 +58,7 @@
 
 		<label>Month :</label>
 
-		<f:select path="month" cssClass="form-control" required="true">
+		<f:select path="month"  required="true">
 
 			<f:option value="january">January</f:option>
 
@@ -92,7 +94,7 @@
 
 		<label>Year :</label>
 
-		<f:select path="year" id="year" cssClass="form-control" required="true">
+		<f:select path="year" id="year"  required="true">
 
 			<f:option value="">Select year</f:option>
 
@@ -100,7 +102,7 @@
 
 		<script type="text/javascript">
 
-			for(y=2015;y<2020;y++){
+			for(y=2015;y<2021;y++){
 
 				var optn = document.createElement("OPTION");
 
@@ -134,7 +136,7 @@
 
 		<label>Half day:</label>
 
-		<f:input path="halfDay" size="30" cssClass="form-control" placeholder="Enter Number of Half Days" required="true"/><br>
+		<f:input path="halfDay" size="30"  placeholder="Enter Number of Half Days" required="true"/><br>
 
 		</div>
 
@@ -144,7 +146,7 @@
 
 			<label>Full Day:</label>
 
-			<f:input path="fullDay" size="30" cssClass="form-control" placeholder="Enter Number of Full Days" required="true"/><br>
+			<f:input path="fullDay" size="30"  placeholder="Enter Number of Full Days" required="true"/><br>
 
 		</div>
 
@@ -161,7 +163,9 @@
 	</div>
 	<script type="text/javascript">
 		$('select#project').on('change', function() {
-			console.log('I m here');
+			$("#employee").empty();
+			
+			
 			$("div#msg").html("");
 			var projectId=this.value;
 			console.log('Project Id : '+projectId);
@@ -178,14 +182,16 @@
 			        var o = new Option(el.employeeName, el.employeeId);
 		                 /// jquerify the DOM object 'o' so we can use the html method
 		                 $(o).html(el.employeeName);
-		                 $("#employee").append(o)
+		                 $("#employee").append(o);
+		                
+		                 
+		                
 			      });
 			    }
 			    else {
 			    	console.log('I m in else');
 			    	$("div#msg").html("No Employee exist for the given project...");
-			    	$('#employee').empty();
-			    	$("#employee").hide();
+			    	
 			    }
 			   
 			  });

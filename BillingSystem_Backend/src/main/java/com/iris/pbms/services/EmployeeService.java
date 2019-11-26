@@ -7,4 +7,5 @@ public interface EmployeeService {
 	public List<Employee> getAllEmployee();
 	public List<Employee> getAllEmployeeNotAllocated();
 	public Employee getEmployeeById(int id);
+	public String getEmployeeById1(int id);
 }
