@@ -226,11 +226,9 @@ public class AdminController {
 
 			String name = employeeService.getEmployeeById1(employeeId);
 
-			System.out.println("i ma in bill");
-
 			map.addAttribute("name", name);
 
-			DataEntryOperator deo=userService.getBill(employeeId, month,year);
+			DataEntryOperator deo=userService.getDEO(employeeId, month,year);
 
 			System.out.println(deo.getfullDay());
 

@@ -34,6 +34,13 @@ public class HomeController {
 		return "LoginForm";
 	}
 
+	/*@RequestMapping(value="/signIn",method=RequestMethod.GET)
+	public String hello()
+	{
+		
+		return "LoginForm";
+	}*/
+	
 	@RequestMapping(value="/signIn",method=RequestMethod.POST)
 	public String validateUser(@RequestParam int userId,@RequestParam String pass,ModelMap map){
 		User uObj=userService.validateUser(userId,pass);

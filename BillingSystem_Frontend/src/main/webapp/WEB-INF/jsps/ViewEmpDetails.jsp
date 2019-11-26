@@ -231,32 +231,13 @@ float:right;}
 </head>
 
 <body>
-
-<div class="header">
-
-  <a href="#default" class="logo">IRIS SOFTWARE</a>
-
-  <div class="header-right">
-
-    <a class="active" href="#home">Home</a>
-
-   
-
-     <a href="logout">Logout</a>
-
-  </div>
-
-</div>
-
-
-
 <div class="bill">      
 
 	     
 
 	      
 
-		  	<h3>Employee Billing</h3><hr>
+		  	<h3>Employee Billing</h3><hr/>
 
 			
 

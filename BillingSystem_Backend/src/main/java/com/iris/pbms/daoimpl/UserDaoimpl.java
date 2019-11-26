@@ -143,7 +143,7 @@ public class UserDaoimpl implements UserDao {
 
 		return null;
 	}
-	public DataEntryOperator getBill(Integer id, String month, int year) {
+	public DataEntryOperator getDEO(Integer id, String month, int year) {
 		try {
 
 			Session session=sessionFactory.getCurrentSession();

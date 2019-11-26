@@ -17,7 +17,7 @@ public interface UserService {
 	 public boolean setAttendance(DataEntryOperator obj);
 	 public List<DataEntryOperator> getAllDeoAttendance();
 	 public ProjectAllocation getConfig(int id);
-	 public DataEntryOperator getBill(Integer id, String month, int year);
+	 public DataEntryOperator getDEO(Integer id, String month, int year);
 	 public double getBill(double perHourBilling, DataEntryOperator deo);
 	
 

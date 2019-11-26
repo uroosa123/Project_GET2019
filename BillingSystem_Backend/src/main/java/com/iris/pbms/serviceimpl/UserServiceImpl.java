@@ -50,8 +50,8 @@ public class UserServiceImpl implements UserService {
 		
 		return userDaoObj.getConfig(id);
 	}
-	public DataEntryOperator getBill(Integer id, String month, int year) {
-		return userDaoObj.getBill(id, month, year);
+	public DataEntryOperator getDEO(Integer id, String month, int year) {
+		return userDaoObj.getDEO(id, month, year);
 	}
 	public double getBill(double perHourBilling, DataEntryOperator deo) {
 		return userDaoObj.getBill(perHourBilling, deo);
