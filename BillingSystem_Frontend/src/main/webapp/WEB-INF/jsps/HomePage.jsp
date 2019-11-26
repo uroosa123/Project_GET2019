@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+      <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ page isELIgnored="false" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -18,6 +19,7 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
 <style>
 .footer {
   position: fixed;
@@ -33,6 +35,7 @@
 <title>Home Page</title>
 </head>
 <body>
+
 
 <div style="background-color:#000080">
 <div class="container"  >
@@ -64,6 +67,11 @@
   </div>
 </div>
 </div>
+
+<core:if test="${not empty msg}">
+		<div style="text-align: center;font-family: verdana;color:#000080" class="alert alert-success">${msg}
+		</div>
+		</core:if>
 
 
 

@@ -57,9 +57,10 @@ public class UserDaoimpl implements UserDao {
 		{
 
 			Session session=sessionFactory.getCurrentSession();
-			Query q=session.createQuery("from com.iris.pbms.models.DataEntryOperator where projectId=:projectId and employeeId=:employeeId");
-			q.setParameter("projectId",obj.getProjectId());
+			Query q=session.createQuery("from com.iris.pbms.models.DataEntryOperator where employeeId=:employeeId and month=:month and year=:year");
+			q.setParameter("month",obj.getMonth());
 			q.setParameter("employeeId",obj.getEmployeeId());
+			q.setParameter("year",obj.getYear());
 			if(q.list().size()==0) {
 			session.save(obj);
 			return true;

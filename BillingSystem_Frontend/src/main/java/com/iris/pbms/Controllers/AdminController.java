@@ -190,10 +190,10 @@ public class AdminController {
 
 		//List<ProjectAllocation> dList = adminDao.getAllAllocate();
 
-		List<DataEntryOperator> dList=userService.getAllDeoAttendance();
-
+		//List<DataEntryOperator> dList=userService.getAllDeoAttendance();
+		
+		List<Employee> dList=employeeService.getAllEmployee();
 		map.addAttribute("devL", dList);
-
 		return "viewEmployee";
 
 	}
@@ -256,9 +256,9 @@ public class AdminController {
 
 		{
 
-			ModelAndView mv=new ModelAndView("Admin");
+			ModelAndView mv=new ModelAndView("viewEmployee");
 
-			mv.addObject("errorMsg","Developer not  allocated ..");
+			mv.addObject("errorMsg","Employee's attendance not marked ..");
 
 			System.out.println("catch of bill");
 

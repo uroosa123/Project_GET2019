@@ -15,4 +15,19 @@ public class GlobalExceptionController {
         ModelAndView mav = new ModelAndView("LoginForm");
         return mav;
     }
+    
+    @ExceptionHandler(java.lang.IndexOutOfBoundsException.class)
+    public ModelAndView handleError500(HttpServletRequest request, Exception e) {
+        ModelAndView mav = new ModelAndView("Admin");
+        mav.addObject("msg","Selected role not configured yet!");
+        return mav;
+    }
+    
+    @ExceptionHandler(Exception.class)
+    public ModelAndView handleAllerror(HttpServletRequest request, Exception e) {
+        ModelAndView mav = new ModelAndView("HomePage");
+        mav.addObject("msg","Some Unknown error occured!");
+        return mav;
+    }
+    
 }

@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
     <%@ include file="header2.jsp" %>
     <%@ include file="footer.jsp" %>
+     <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
   
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -18,6 +19,11 @@
 <div align="center">
 		<h1 style="background-color:lightblue;color:darkblue">Welcome Admin! </h1><hr/>
 	</div>
+	
+	<core:if test="${not empty msg}">
+		<div style="text-align: center;font-family: verdana;color:#000080" class="alert alert-success">${msg}
+		</div>
+		</core:if>
 	
 <div class="dropdown" align="right">
     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">

@@ -9,11 +9,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
 <div align="center">
+
+<core:if test="${not empty errorMsg}">
+		<div style="text-align: center;font-family: verdana;color:#000080" class="alert alert-success">${errorMsg}
+		</div>
+		</core:if>
+
 <form action="Billing"  method="get">
+
 
 					<div>
 
@@ -23,7 +31,7 @@
 
 						 	 <core:forEach items="${devL}" var="pOb">
 
-								<option value="${pOb.empObj.employeeId}" >${pOb.empObj.employeeName}</option>
+								<option value="${pOb.employeeId}" >${pOb.employeeName}</option>
 
 							 </core:forEach>
 
@@ -36,29 +44,29 @@
 
 						<select  name="month" required="true">
 
-							<option value="January">January</option>
+							<option value="january">January</option>
 
-							<option value="February">February</option>
+							<option value="february">February</option>
 
-							<option value="March">March</option>
+							<option value="march">March</option>
 
-							<option value="April">April</option>
+							<option value="april">April</option>
 
-							<option value="May">May</option>
+							<option value="may">May</option>
 
-							<option value="June">June</option>
+							<option value="june">June</option>
 
-							<option value="July">July</option>
+							<option value="july">July</option>
 
-							<option value="August">August</option>
+							<option value="august">August</option>
 
-							<option value="September">September</option>
+							<option value="september">September</option>
 
-							<option value="October">October</option>
+							<option value="october">October</option>
 
-							<option value="November">November</option>
+							<option value="november">November</option>
 
-							<option value="December">December</option>
+							<option value="december">December</option>
 
 						</select>
 
@@ -74,9 +82,9 @@
 
 					<label>Year :</label>
 
-					<input type="number" name="year" size="30"  placeholder="Select Year" required/><br>
+					<input type="number" name="year" id="year" size="30"  placeholder="Select Year" required/><br>
 
-					</div>
+		</div>
 
 					
 

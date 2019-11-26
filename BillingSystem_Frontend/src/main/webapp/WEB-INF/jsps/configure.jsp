@@ -95,7 +95,7 @@
 
 			<br><div class="form-group">
 
-	    			<label>Per Hour Billing  : </label> <f:input type="number" path="perHourBilling" size="30"  placeholder="Enter Per Hour Billing" required="required"/>
+	    			<label>Per Hour Billing  : </label> <f:input type="number" path="perHourBilling" size="30" min="10" max="2000" placeholder="Enter Per Hour Billing" required="required"/>
 		   
 
 			 </div>

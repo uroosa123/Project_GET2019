@@ -48,7 +48,7 @@
 
 		<label>Employees Under project :</label>
 
-		<f:select path="employeeId" id="employee" >
+		<f:select path="employeeId" id="employee" required="true">
 			<f:option value="0">----Select Employee--------</f:option>
 		</f:select><br>
 		<div id="msg"></div>
